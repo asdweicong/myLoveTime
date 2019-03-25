@@ -67,30 +67,6 @@ Page({
       })
     }
     this.setCountDown(this.data.beginToUnderstand);
-    // wx.getSystemInfo({
-    //   success(res) {
-    //     console.log('res.model',res.model)
-    //     console.log('res.pixelRatio',res.pixelRatio)
-    //     console.log('res.windowWidth',res.windowWidth)
-    //     console.log('res.windowHeight',res.windowHeight)
-    //     console.log('res.language',res.language)
-    //     console.log('res.version',res.version)
-    //     console.log('res.platform', res.platform)
-    //   }
-    // })
-
-    try {
-      const res = wx.getSystemInfoSync()
-      console.log(res.model)
-      console.log(res.pixelRatio)
-      console.log(res.windowWidth)
-      console.log(res.windowHeight)
-      console.log(res.language)
-      console.log(res.version)
-      console.log(res.platform)
-    } catch (e) {
-      // Do something when catch error
-    }
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
@@ -138,10 +114,10 @@ Page({
       var _month = accesstime_month - time_now_server_month
       var _day = accesstime_day - time_now_server_day
       if (accesstime_month < time_now_server_month){
-        _month = accesstime_month - time_now_server_month + 12
+        _month = time_now_server_month - accesstime_month
       }
       if (accesstime_day < time_now_server_day) {
-        _day = accesstime_day - time_now_server_day + 30
+        _day = time_now_server_day - accesstime_day
       }
       
       var ToNowYear = _year+"年"+_month +"月"+_day +"天"
