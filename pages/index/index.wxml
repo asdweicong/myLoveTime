@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+     获取头像昵称 
+    </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <!-- <image src='./img/182920.jpg' class='bannerImg'></image> -->
+  <view  class="usermotto">
+    <!-- <text> -->
+      <!-- {{You}}And{{Me}}相识到现在  -->
+    <!-- </text> -->
+    <text>
+      {{You}}And{{Me}}相识到现在 
+    </text>
+  </view>
+  <text class="user-motto">
+    经历了{{timeToNowYear}} <br/>
+    一共{{timeToNow}}
+  </text>
+</view>
