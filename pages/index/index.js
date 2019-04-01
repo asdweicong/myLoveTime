@@ -1,8 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
-// const forOutTime = require('/time.js')
-// console.log('forOutTime',forOutTime)
+const forOutTime = require('/time.js')
+console.log('forOutTime',forOutTime)
 Page({
   data: {
     You: '小小燕',
@@ -111,13 +111,15 @@ Page({
       var countTime = day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
 
       var _year = accesstime_year - time_now_server_year
-      var _month = accesstime_month - time_now_server_month
-      var _day = accesstime_day - time_now_server_day
-      if (accesstime_month < time_now_server_month){
-        _month = time_now_server_month - accesstime_month
+      var _month = accesstime_month + (12 - time_now_server_month)
+      var _day = time_now_server_day - accesstime_day
+      console.log(accesstime_month, time_now_server_month,"月")
+      console.log(accesstime_day, time_now_server_day)
+      if (time_now_server_month < accesstime_month){
+        _month = accesstime_month - time_now_server_month
       }
-      if (accesstime_day < time_now_server_day) {
-        _day = time_now_server_day - accesstime_day
+      if (time_now_server_day < accesstime_day) {
+        _day = accesstime_day - time_now_server_day
       }
       
       var ToNowYear = _year+"年"+_month +"月"+_day +"天"
